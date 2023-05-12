@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/">Home
+          <a class="nav-link" href="/">Home
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
@@ -45,8 +45,10 @@
           </div>
         </li>
 
-        <li class="nav-item dropdown">
-          <select class="form-select"></select>
+        <li class="nav-item dropdown d-flex">
+          <select class="form-select" onchange="setCookie('theme', this.value, 365);">
+            <!-- <option value="" selected disabled hidden>Select an Theme</option> -->
+          </select>
         </li>
 
       </ul>

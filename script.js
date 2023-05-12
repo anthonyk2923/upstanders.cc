@@ -34,23 +34,58 @@ fetch('https://bootswatch.com/api/5.json')
 
 
 function load(data) {
+  
   const themes = data.themes;
   const select = document.querySelector('select');
-  
   themes.forEach((value, index) => {
-  	const option = document.createElement('option');
+    const option = document.createElement('option');
     option.value = index;
     option.textContent = value.name;
-    
     select.append(option);
   });
+  let selectedCookie = getCookie('theme') 
+  if (selectedCookie === ""){
+    selectedCookie = 16
+  }
+  select.value=selectedCookie
   
   select.addEventListener('change', (e) => {
     const theme = themes[e.target.value];
     document.querySelector('#theme').setAttribute('href', theme.css);
     document.querySelector('.alert h1').textContent = theme.name;
   });
-  
+
   const changeEvent = new Event('change');
   select.dispatchEvent(changeEvent);
+}
+
+x = 0
+function setCookie(cookieName, cookieValue, nDays) {
+  x = x + 1
+  if (x === 1) {
+    return;
+  }
+  var today = new Date();
+  var expire = new Date();
+
+  if (!nDays)
+    nDays = 1;
+
+  expire.setTime(today.getTime() + 3600000 * 24 * nDays);
+  document.cookie = cookieName + "=" + cookieValue + ";expires=" + expire.toGMTString();
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
