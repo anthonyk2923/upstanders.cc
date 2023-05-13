@@ -98,7 +98,7 @@ const player = {
 }
 function getstats() {
   let weight = document.getElementById("weight-slider").value;
-  document.getElementById("weight-output").innerHTML = weight;
+  // document.getElementById("weight-output").innerHTML = weight;
   player.weight = weight
   document.getElementById('stats').innerHTML = str = JSON.stringify(player);
 }
