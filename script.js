@@ -98,7 +98,10 @@ const player = {
 }
 function getstats() {
   let weight = document.getElementById("weight-slider").value;
-  // document.getElementById("weight-output").innerHTML = weight;
+  let height = document.getElementById("height-slider").value;
+  let strength = document.getElementById("strength-slider").value;
   player.weight = weight
+  player.height = height
+  player.strength = strength
   document.getElementById('stats').innerHTML = str = JSON.stringify(player);
 }
