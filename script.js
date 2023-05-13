@@ -34,7 +34,7 @@ fetch('https://bootswatch.com/api/5.json')
 
 
 function load(data) {
-  
+
   const themes = data.themes;
   const select = document.querySelector('select');
   themes.forEach((value, index) => {
@@ -43,12 +43,12 @@ function load(data) {
     option.textContent = value.name;
     select.append(option);
   });
-  let selectedCookie = getCookie('theme') 
-  if (selectedCookie === ""){
+  let selectedCookie = getCookie('theme')
+  if (selectedCookie === "") {
     selectedCookie = 16
   }
-  select.value=selectedCookie
-  
+  select.value = selectedCookie
+
   select.addEventListener('change', (e) => {
     const theme = themes[e.target.value];
     document.querySelector('#theme').setAttribute('href', theme.css);
@@ -78,7 +78,7 @@ function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
+  for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
@@ -88,4 +88,17 @@ function getCookie(cname) {
     }
   }
   return "";
+}
+// game
+
+const player = {
+  weight: 0,
+  height: 0,
+  strength: 0
+}
+function getstats() {
+  let weight = document.getElementById("weight-slider").value;
+  document.getElementById("weight-output").innerHTML = weight;
+  player.weight = weight
+  document.getElementById('stats').innerHTML = str = JSON.stringify(player);
 }
