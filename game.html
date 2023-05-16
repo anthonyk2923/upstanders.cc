@@ -6,7 +6,19 @@
   <meta name="viewport" content="width=device-width">
   <title>Upstander</title>
   <!-- Beginning of Imports-->
+  <link href="favicon.png" rel="icon" type="image/x-icon">
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    #game-container {
+      width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -15,7 +27,6 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
   <script src="script.js"></script>
-  <!-- End of Imports  -->
   <div id="navbar-placeholder"></div>
   <script>
     $(function () {
@@ -23,14 +34,18 @@
     });
   </script>
 
-  <div class="d-grid gap-2">
-    <button class="btn btn-lg btn-primary" type="button" onclick=generateFacts()>Generate a Quote!
-    </button>
+  <!-- End of Imports -->
+
+  <div class="game">
+    <h1 id="decision-header"></h1>
+    <p id = "game-text"></p>
+    <button type="button" class="btn btn-primary"><p id="choice1"></p></button>
+    <button type="button" class="btn btn-primary"><p id="choice2"></p></button>
+    <button type="button" class="btn btn-primary"><p id="choice3"></p></button>
   </div>
-  <h1 id="here">
-  </h1>
-      <div id="footer-placeholder"></div>
-    <script>
+
+  <div id="footer-placeholder"></div>
+  <script>
     $(function () {
       $("#footer-placeholder").load("footer.html");
     });

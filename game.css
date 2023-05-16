@@ -1,0 +1,32 @@
+#sliders,
+#submit_btn,
+#confirm_btn,
+#fate_btn {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+/* #weight_val,
+#height_val,
+#strength_val {
+  margin-bottom: 20px;
+} */
+
+/* #weight_span, #height_span, #strength_span {
+  
+}
+ */
+
+.form-range {
+  /* width: 90%;
+  padding: 10px; */
+  cursor: pointer;
+}
+
+body {
+  background-image: url("paper.avif");
+}

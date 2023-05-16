@@ -16,7 +16,8 @@ var facts = ['"Genocide is the responsibility of the entire world." - Ann Clwyd'
   '"Genocide is a demon." - Roméo Dallaire',
   '"It is important to remember that genocide is not a single event, but a process that evolves over time." - Romeo Dallaire',
   '"Genocide is the systematic extermination of one group of people by another group of people because of differences." - Lorna Jane Cook',
-  '"Genocide is not just a crime against humanity; it is an attack on our common humanity." - Ban Ki-moon']
+  '"Genocide is not just a crime against humanity; it is an attack on our common humanity." - Ban Ki-moon'
+            ]
 var randomFact = randomlist(facts);
 
 function generateFacts() {
@@ -88,20 +89,4 @@ function getCookie(cname) {
     }
   }
   return "";
-}
-// game
-
-const player = {
-  weight: 0,
-  height: 0,
-  strength: 0
-}
-function getstats() {
-  let weight = document.getElementById("weight-slider").value;
-  let height = document.getElementById("height-slider").value;
-  let strength = document.getElementById("strength-slider").value;
-  player.weight = weight
-  player.height = height
-  player.strength = strength
-  document.getElementById('stats').innerHTML = str = JSON.stringify(player);
 }

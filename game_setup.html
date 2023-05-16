@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Upstander</title>
+  <!-- Beginning of Imports-->
+  <link href="favicon.png" rel="icon" type="image/x-icon">
+  <link href="game.css" rel="stylesheet" type="text/css" />
+
+<body>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <div id="navbar-placeholder"></div>
+  <script>
+    $(function () {
+      $("#navbar-placeholder").load("navbar.html");
+    });
+  </script>
+  <script src="game.js"></script>
+
+  <!-- End of Imports -->
+  <br>
+  <h2 id="submit_warning" class="text-danger" align=center></h2>
+
+  <h1 align=center>Player Stats</h1>
+  <br>
+  <div id="full-stats">
+    <div id="sliders">
+      Weight (lbs):
+      <div id="weight_val">
+        <h4 id="weight_stats" class="weight_stats"></h4>
+      </div>
+      <input type="range" class="form-range" min="30" max="350" value="0" id="weight-slider">
+      Height (in):
+      <div id="height_val">
+        <h4 id="height_stats" class="height_stats"></h4>
+      </div>
+      <input type="range" class="form-range" min="45" max="90" value="0" id="height-slider">
+      Strength (%):
+      <div id="strength_val">
+        <h4 id="strength_stats" class="strength_stats"></h4>
+      </div>
+      <input type="range" class="form-range" min="0" max="100" value="0" id="strength-slider">
+    </div>
+    <br>
+    <button type="button" class="btn btn-success" id="fate_btn" onclick="randomize_stats()">Let Fate Decide</button>
+    <br>
+    <button type="button" class="btn btn-outline-secondary" id="confirm_btn" onclick="getstats()">Get Stats</button>
+    <br>
+    <button type="button" class="btn btn-outline-primary" id="submit_btn" onclick="submit()">Submit</button>
+  </div>
+
+  <!-- <h1 id="allstats"></h1> -->
+  <h3 id="weight_stats"></h3>
+  <h3 id="height_stats"></h3>
+  <h3 id="strength_stats"></h3>
+
+
+  <div id="footer-placeholder"></div>
+  <script>
+    $(function () {
+      $("#footer-placeholder").load("footer.html");
+    });
+  </script>
+</body>
+
+</html>

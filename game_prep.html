@@ -7,13 +7,14 @@
   <title>Upstander</title>
   <!-- Beginning of Imports-->
   <link href="favicon.png" rel="icon" type="image/x-icon">
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="game.css" rel="stylesheet" type="text/css" />
 
-<body>
+<body <body onload="getCookieStats()">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
+  <script src="game.js"></script>
   <script src="script.js"></script>
   <div id="navbar-placeholder"></div>
   <script>
@@ -23,13 +24,26 @@
   </script>
 
   <!-- End of Imports -->
+  <div class="game" align=center>
+    <h1>Welcome to the Preventing Genocide Game</h1>
+    <p id="game-text">You find yourself in a situation where tensions between different ethnic groups are rising.
+      Navigate
+      through the challenges and choose your desicions wisely to deescalate current tensions, and prevent further
+      conflict.</p>
+    <hr>
+
+
+    <button onclick="display_stats()">View Stats</button>
+    <br><br>
+    <button type="button" class="btn btn-outline-success" id="start-button" onclick="startButton()">Start Game</button>
+    <h1 id="allstats"></h1>
+  </div>
   <div id="footer-placeholder"></div>
   <script>
     $(function () {
       $("#footer-placeholder").load("footer.html");
     });
   </script>
-
 </body>
 
 </html>
