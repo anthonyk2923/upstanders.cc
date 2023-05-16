@@ -27,6 +27,11 @@
   cursor: pointer;
 }
 
+#choice1, #choice2, #choice3 {
+  padding: 5px;
+  margin: 10px;
+}
+
 body {
   background-image: url("paper.avif");
 }

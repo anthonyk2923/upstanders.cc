@@ -1,33 +1,18 @@
-// base stats
 const player = {
   weight: 0,
   height: 0,
   strength: 0
 }
-
-// show player stats live on slider
-// var weight_output = document.getElementById("weight_span");
-// var height_output = document.getElementById("height_span");
-// var strength_output = document.getElementById("strength_span");
-
-// var weight_slider = document.getElementById("weight-slider").oninput = function() {
-//   var weight_value = (this.weight_value-this.) 
-// }
-// var height_slider = document.getElementById("height-slider")
-// var strength_slider = document.getElementById("strength-slider")
-
 var count = 0;
 
 function getstats() {
-  // get stats
   let weight = document.getElementById("weight-slider").value;
   let height = document.getElementById("height-slider").value;
   let strength = document.getElementById("strength-slider").value;
   player.weight = weight
   player.height = height
   player.strength = strength
-  // display stats
-  // document.getElementById('allstats').innerHTML = str = JSON.stringify(player);
+
   document.getElementById('weight_stats').innerHTML = str = JSON.stringify(player.weight);
   document.getElementById('height_stats').innerHTML = str = JSON.stringify(player.height);
   document.getElementById('strength_stats').innerHTML = str = JSON.stringify(player.strength);
@@ -35,13 +20,6 @@ function getstats() {
   count = 1;
 
 }
-
-
-
-
-
-
-//Cookies
 x = 0
 function setCookie(cookieName, cookieValue, nDays) {
   x = x + 1
@@ -76,13 +54,11 @@ function getCookie(cname) {
 
 
 
-// function to get random num
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function randomize_stats() {
-  // generate random stats
   let random_weight = getRandomNumber(30, 350);
   let random_height = getRandomNumber(45, 90);
   let random_strength = getRandomNumber(0, 100);
@@ -91,29 +67,21 @@ function randomize_stats() {
   player.height = random_height
   player.strength = random_strength
 
-  document.getElementById('weight_stats').innerHTML = str = JSON.stringify(player.weight);
   document.getElementById('weight-slider').value = str = JSON.stringify(player.weight);
-  document.getElementById('height_stats').innerHTML = str = JSON.stringify(player.height);
   document.getElementById('height-slider').value = str = JSON.stringify(player.height);
-  document.getElementById('strength_stats').innerHTML = str = JSON.stringify(player.strength);
   document.getElementById('strength-slider').value = str = JSON.stringify(player.strength);
-
 
   count = 2;
 }
-
 function submit_stats() {
 
 }
-
-// submit stats
 function submit() {
   console.log(player.strength)
   if (count == 0) {
-    document.getElementById('submit_warning').innerHTML = str = 'Oh Snap! Please get stats first.';
+    document.getElementById('submit_warning').innerHTML = str = 'Oh snap! Please get stats first.';
   }
   if (count == 1) {
-    // get final stats
     getstats()
     setCookie('strength', player.strength, 365)
     setCookie('height', player.height, 365)
@@ -130,88 +98,144 @@ function submit() {
   }
   else {
     setCookie('strength', player.strength, 365)
-          setCookie('height', player.height, 365)
+    setCookie('height', player.height, 365)
     setCookie('weight', player.weight, 365)
-    
-    // console.log("Fate has decided");
+
   }
 }
-// end of game setup
-// game prep start
-
-function getCookieStats(){
+function getCookieStats() {
   player.strength = getCookie('strength')
   player.weight = getCookie('weight')
   player.height = getCookie('height')
+  if (player.weight == 30 && player.height == 45 && player.strength == 0) {
+
+    randomize_stats()
+  }
+  if (player.weight == "" && player.height == "" && player.strength == "") {
+    randomize_stats()
+  }
 }
 
 function display_stats() {
-    document.getElementById('allstats').innerHTML = str = JSON.stringify(player);
+  document.getElementById('allstats').innerHTML = str = JSON.stringify(player);
 }
 
-/* Give the user a cookie to track or something to track weight, height, and strength data */
+// start of game.html
 
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const startButton = document.getElementById('start-button');
-//     const gameText = document.getElementById('game-text');
-//     let currentStep = 0;
-
-const steps = [
-  {
-    text: "You witness an incident where an individual is being discriminated against because of their ethnicity. What do you do?",
-    choices: [
-      "Intervene and try to defuse the situation peacefully.",
-      "Report the incident to the authorities.",
-      "Choose to observe silently without taking action."
-    ],
-    outcomes: [
-      "Your intervention helps deescalate tensions, fostering a sense of unity. Your actions contribute to preventing further discrimination and violence.",
-      "The authorities take action and investigate the situation, holding those responsible accountable. By raising awareness, you play a role in preventing future conflicts.",
-      "Although it may seem safer in the short term, your silence allows discrimination to continue. Remember, your voice can make a difference in preventing violence and injustice."
-    ]
-  },
-  {
-    text: "As you travel further, you encounter a community in need of support. What do you do?",
-    choices: [
-      "Organize a humanitarian effort to provide immediate aid.",
-      "Advocate for long-term solutions to address their needs.",
-      "Ignore their plight and continue your journey."
-    ],
-    outcomes: [
-      "You organize a humanitarian effort, gathering supplies and distributing them to the community. Your actions help alleviate their immediate suffering and provide hope for a better future. Your compassion and support make a tangible impact.",
-      "You raise awareness about the community's needs and advocate for long-term solutions. By engaging with policymakers and organizations, you help address the root causes of their hardships. Your dedication contributes to creating sustainable change.",
-      "By ignoring their plight, you continue your journey without making a difference. Remember, every action counts when it comes to preventing suffering and promoting unity."
-    ]
-  }
-];
-
-var currentSteps = 0;
-function startButton() {
-  // console.log(steps[1]);
-  // console.log(steps[0].choices[1]);
-  console.log('before start');
-  window.location.href = 'game.html';
-  console.log(steps[currentStep].text);
-  console.log(steps[currentStep].choices[0], steps[currentStep].choices[1], steps[currentStep].choices[2]);
-  console.log("start");
-  condole.log('after start');
+var currentStep = 0;
+function parentfunction() {
   updateGameText(steps[currentStep].text);
-  console.log("ran first one");
   updateGameChoices(steps[currentStep].choices[0], steps[currentStep].choices[1], steps[currentStep].choices[2]);
-  console.log("done");
 }
 
 function updateGameText(text) {
-  console.log(text);
-  document.getElementById("game-text").innerHTML = str = JSON.stringify(text);
+  document.getElementById("game-text").innerHTML = text;
 }
 
 function updateGameChoices(choice1, choice2, choice3) {
-  console.log(choice1);
-  console.log(choice2);
-  console.log(choice3);
-  document.getElementById("choice1").innerHTML = str = JSON.stringify(choice1);
-  document.getElementById("choice2").innerHTML = str = JSON.stringify(choice2);
-  document.getElementById("choice3").innerHTML = str = JSON.stringify(choice3);
+  document.getElementById("choice1").value = choice1;
+  document.getElementById("choice2").value = choice2;
+  document.getElementById("choice3").value = choice3;
+}
+
+var buttonLimit = 0;
+var answersWrong = 0;
+var buttonpressed = false;
+function button1() {
+  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6 || buttonLimit == 7 && currentStep == 7 || buttonLimit == 8 && currentStep == 8) {
+    document.getElementById("outcome-header").innerHTML = "Your Actions Outcome";
+    updateGameOutcome(steps[currentStep].outcomes[0]);
+    buttonpressed = true;
+    if (currentStep == 3) {
+      answersWrong++;
+    }
+  }
+  else {
+    document.getElementById("button-limit-error").innerHTML = str = "You can only select one option";
+  }
+}
+
+function button2() {
+  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6 || buttonLimit == 7 && currentStep == 7 || buttonLimit == 8 && currentStep == 8) {
+    document.getElementById("outcome-header").innerHTML = "Your Actions Outcome";
+    updateGameOutcome(steps[currentStep].outcomes[1]);
+    buttonpressed = true;
+    if (currentStep == 2 || currentStep == 5) {
+      answersWrong++;
+    }
+  }
+  else {
+    console.log(buttonLimit);
+    console.log(currentStep);
+    document.getElementById("button-limit-error").innerHTML = str = "You can only select one option";
+  }
+}
+
+function button3() {
+  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6 || buttonLimit == 7 && currentStep == 7 || buttonLimit == 8 && currentStep == 8) {
+    document.getElementById("outcome-header").innerHTML = "Your Actions Outcome";
+    updateGameOutcome(steps[currentStep].outcomes[2]);
+    buttonpressed = true
+    if (currentStep == 0 || currentStep == 1 || currentStep == 4) {
+      answersWrong++;
+    }
+  }
+
+  else {
+    document.getElementById("button-limit-error").innerHTML = str = "You can only select one option";
+  }
+}
+
+function updateGameOutcome(outcome) {
+  buttonLimit++;
+  document.getElementById("outcome-text").innerHTML = outcome;
+}
+
+function continueButton() {
+
+  if (buttonpressed === true) {
+    currentStep++;
+    if (currentStep == 9) {
+      //   setCookie('score',answersWrong,365)
+      //   score = getCookie('score')
+      //   window.location.href = 'game_end.html';
+      //   console.log(score)
+
+      //   document.getElementById("final-score-end").innerHTML = `You got ${score} out of 6 questions.`;
+      //   console.log("Nice Job!");
+      window.location.href = 'game_end.html';
+      setCookie('score', answersWrong, 365)
+
+
+
+    }
+
+    if (currentStep == 8) {
+      document.getElementById("continue-button").value = "Submit";
+      document.getElementById("button-limit-error").innerHTML = str = "";
+      document.getElementById("no-selection-error").innerHTML = str = "";
+
+      parentfunction();
+      document.getElementById("outcome-header").innerHTML = "";
+      document.getElementById("outcome-text").innerHTML = "";
+      buttonpressed = false;
+    }
+    else {
+      document.getElementById("button-limit-error").innerHTML = str = "";
+      document.getElementById("no-selection-error").innerHTML = str = "";
+
+      parentfunction();
+      document.getElementById("outcome-header").innerHTML = "";
+      document.getElementById("outcome-text").innerHTML = "";
+      buttonpressed = false;
+    }
+  }
+  else {
+    document.getElementById("no-selection-error").innerHTML = str = "Please select an option before continuing ";
+  }
+}
+function endhtml() {
+  var score = getCookie('score')
+  console.log(score)
+  document.getElementById("final-score-end").innerHTML = `You got ${score} out of 6 questions.`;
 }

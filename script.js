@@ -17,7 +17,7 @@ var facts = ['"Genocide is the responsibility of the entire world." - Ann Clwyd'
   '"It is important to remember that genocide is not a single event, but a process that evolves over time." - Romeo Dallaire',
   '"Genocide is the systematic extermination of one group of people by another group of people because of differences." - Lorna Jane Cook',
   '"Genocide is not just a crime against humanity; it is an attack on our common humanity." - Ban Ki-moon'
-            ]
+]
 var randomFact = randomlist(facts);
 
 function generateFacts() {
@@ -29,20 +29,20 @@ function randomlist(list) {
   return list[x]
 }
 
-fetch('https://bootswatch.com/api/5.json')
+fetch('https://bootswatch.com/api/5.json', )
   .then(response => response.json())
   .then(data => load(data));
 
-
 function load(data) {
-
   const themes = data.themes;
   const select = document.querySelector('select');
   themes.forEach((value, index) => {
-    const option = document.createElement('option');
-    option.value = index;
-    option.textContent = value.name;
-    select.append(option);
+    if (value.name == "Lux" || value.name == "Sketchy" || value.name=="Sandstone"){
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = value.name;
+      select.append(option);
+    }
   });
   let selectedCookie = getCookie('theme')
   if (selectedCookie === "") {
