@@ -154,10 +154,35 @@
   justify-content: center;
   align-items: center;
 }
-.card{
-  margin:.5%
+
+.card {
+  margin: .5%
+}
+
+.our-mission-text {
+  margin: 5px;
+}
+
+#github-icon {
+  transform: scale(3);
+  /* make github icon 3 times bigger */
+}
+
+.upstander-text {
+  margin: 10px;
 }
 
 body {
   background-image: url("paper.avif");
+}
+
+#imgimgimg {
+
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.upupup {
+  width: 30%
 }

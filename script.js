@@ -1,4 +1,4 @@
-var facts = ['"Genocide is the responsibility of the entire world." - Ann Clwyd',
+facts = ['"Genocide is the responsibility of the entire world." - Ann Clwyd',
   '"The only thing necessary for the triumph of evil is for good men to do nothing." - Edmund Burke',
   '"Genocide begins, however improbably, in the conviction that classes of biological distinction indisputably sanction social and political discrimination." - Andre Breton',
   '"Genocide is the antithesis of democracy." - Michael Ignatieff',

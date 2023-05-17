@@ -87,14 +87,14 @@ function submit() {
     setCookie('height', player.height, 365)
     setCookie('weight', player.weight, 365)
 
-    window.location.href = 'game_prep.html';
+    window.location.href = 'survival.html';
   }
   if (count == 2) {
     setCookie('strength', player.strength, 365)
     setCookie('height', player.height, 365)
     setCookie('weight', player.weight, 365)
 
-    window.location.href = 'game_prep.html';
+    window.location.href = 'survival.html';
   }
   else {
     setCookie('strength', player.strength, 365)
@@ -142,7 +142,7 @@ var buttonLimit = 0;
 var answersWrong = 0;
 var buttonpressed = false;
 function button1() {
-  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6 || buttonLimit == 7 && currentStep == 7 || buttonLimit == 8 && currentStep == 8) {
+  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6) {
     document.getElementById("outcome-header").innerHTML = "Your Actions Outcome";
     updateGameOutcome(steps[currentStep].outcomes[0]);
     buttonpressed = true;
@@ -156,11 +156,11 @@ function button1() {
 }
 
 function button2() {
-  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6 || buttonLimit == 7 && currentStep == 7 || buttonLimit == 8 && currentStep == 8) {
+  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6) {
     document.getElementById("outcome-header").innerHTML = "Your Actions Outcome";
     updateGameOutcome(steps[currentStep].outcomes[1]);
     buttonpressed = true;
-    if (currentStep == 2 || currentStep == 5) {
+    if (currentStep == 2 || currentStep == 5 || currentStep == 7) {
       answersWrong++;
     }
   }
@@ -172,11 +172,11 @@ function button2() {
 }
 
 function button3() {
-  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6 || buttonLimit == 7 && currentStep == 7 || buttonLimit == 8 && currentStep == 8) {
+  if (buttonLimit == 0 && currentStep == 0 || buttonLimit == 1 && currentStep == 1 || buttonLimit == 2 && currentStep == 2 || buttonLimit == 3 && currentStep == 3 || buttonLimit == 4 && currentStep == 4 || buttonLimit == 5 && currentStep == 5 || buttonLimit == 6 && currentStep == 6) {
     document.getElementById("outcome-header").innerHTML = "Your Actions Outcome";
     updateGameOutcome(steps[currentStep].outcomes[2]);
     buttonpressed = true
-    if (currentStep == 0 || currentStep == 1 || currentStep == 4) {
+    if (currentStep == 0 || currentStep == 1 || currentStep == 4 || currentStep == 7) {
       answersWrong++;
     }
   }
@@ -195,7 +195,7 @@ function continueButton() {
 
   if (buttonpressed === true) {
     currentStep++;
-    if (currentStep == 9) {
+    if (currentStep == 7) {
       //   setCookie('score',answersWrong,365)
       //   score = getCookie('score')
       //   window.location.href = 'game_end.html';
@@ -203,21 +203,24 @@ function continueButton() {
 
       //   document.getElementById("final-score-end").innerHTML = `You got ${score} out of 6 questions.`;
       //   console.log("Nice Job!");
+      setCookie('score', answersWrong, 365);
       window.location.href = 'game_end.html';
-      setCookie('score', answersWrong, 365)
 
 
 
     }
 
-    if (currentStep == 8) {
+    if (currentStep == 6) {
       document.getElementById("continue-button").value = "Submit";
       document.getElementById("button-limit-error").innerHTML = str = "";
       document.getElementById("no-selection-error").innerHTML = str = "";
 
       parentfunction();
+
       document.getElementById("outcome-header").innerHTML = "";
       document.getElementById("outcome-text").innerHTML = "";
+      document.getElementById("challenge-text").innerHTML = "Challenge Mode!";
+
       buttonpressed = false;
     }
     else {
@@ -235,7 +238,15 @@ function continueButton() {
   }
 }
 function endhtml() {
-  var score = getCookie('score')
-  console.log(score)
-  document.getElementById("final-score-end").innerHTML = `You got ${score} out of 6 questions.`;
+  var score = getCookie('score');
+  console.log(score);
+  document.getElementById("final-score-end").innerHTML = `Congratulations! You got ${score} questions wrong out of 7 questions.`;
+}
+function survival() {
+  if (player.height < 65 || player.weight > 175 || player.strength < 50) {
+    document.getElementById('killed').innerHTML = "You would not have made it past the first selection. When the jewish people were unloaded from the trains. A selection was held, if you were overweight, too weak, or really short, you would instantly people sent to be killed."
+  }
+  else {
+    document.getElementById('survived').innerHTML = "You would have have made it past the first selection, this doesn't guarantee survival, in fact odds would stil be completely against you, but since you were strong, somewhat tall, and not overweight, you would probably have made it past the first day."
+  }
 }
