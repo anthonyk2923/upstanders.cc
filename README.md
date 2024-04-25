@@ -1,3 +1,3 @@
 ***school project***
 
-In coloboration with Andrew Kaufman( https://github.com/andrewk2929 )
+In collaboration with Andrew Kaufman( https://github.com/andrewk2929 )
